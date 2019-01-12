@@ -1,43 +1,22 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, ListGroup, ListGroupItem,
-  InputGroup, Input} from 'reactstrap';
-
-
-class List extends React.Component {
-  constructor(props){
-    super(props);
-
-    this.click = props.click
-
-    this.state = {
-      items: props.items
-    };
-  }
-
-  render() {
-    var items = this.state.items.map((it, ind) => (
-      <ListGroupItem key={it.name}
-                     onClick={() => this.click(ind)}>
-        {it.name}
-      </ListGroupItem>
-    ));
-
-    return(
-      <ListGroup>{items}</ListGroup>
-    );
-  }
-}
+  InputGroup, Input, Card, CardTitle, FormGroup, Form, Button} from 'reactstrap';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      text: 'default',
       activePlanet: 0,
       planets: [
         {
           name: 'Sun',
-          sats: [],
+          sats: [
+            {
+              'name': 'earth',
+            }
+          ],
         },
         {
           name: 'Mercury',
@@ -48,49 +27,62 @@ class App extends Component {
           ],
         },
         {
-          name: 'Venus',
-          sats: [
-            {
-              name: 'Venus 1'
-            },
-            {
-              name: 'Venus 2'
-            },
-            {
-              name: 'Venus 3'
-            },
-          ],
-        },
-        {
-          name: 'Earth',
-          sats: []
-        },
-        {
-          name: 'Mars',
+          name: 'NEW',
           sats: [],
-        },
-        {
-          name: 'Jupiter',
         }
       ],
+      sats: [{
+        name: 'default',
+      }],
     };
   }
 
   render() {
+
     return (
       <Container>
         <Row>
-          <Col xs="xl-2">
-            <List
-              items={this.state.planets}
-              click={(ind) => this.setState({ activePlanet: ind })} />
+          <Col xs="xl-3">
+            <ListGroup>
+            {
+              this.state.planets.map((it, ind) =>
+              <ListGroupItem key={ind}
+                             onClick={() => this.setState({activePlanet: ind})}>
+                {it.name}
+                <Form onSubmit={(event) => {event.preventDefault(); console.log(ind)}}>
+                  <Input type="text" name="name" placeholder="Name" bsSize="sm" value={this.state.planets[this.state.activePlanet].name} />
+                  <InputGroup>
+                    <Input type="text" name="radius" placeholder="Radius" bsSize="sm" />
+                    <Input type="text" name="name" placeholder="Rotation radius" bsSize="sm" />
+                    <Input type="text" name="name" placeholder="Time" bsSize="sm" />
+                  </InputGroup>
+                  <Button type="submit" size="sm">Submit</Button>
+                </Form>
+              </ListGroupItem>)
+            }
+            </ListGroup>
 
-            <InputGroup>
-              <Input placeholder="username" />
-            </InputGroup>
           </Col>
-          <Col xs="xl-2">
-            <List items={this.state.planets[this.state.activePlanet].sats} />
+          <Col xs="xl-3">
+            <ListGroup>
+              {
+                this.state.planets[this.state.activePlanet].sats.map((it, ind) =>
+                  <ListGroupItem key={ind}
+                                 onClick={null}>
+                    {it.name}
+                    <Form onSubmit={(event) => {event.preventDefault(); console.log(ind)}}>
+                      <Input type="text" name="name" placeholder="Name" bsSize="sm" value={this.state.planets[this.state.activePlanet].sats[ind].name} />
+                      <InputGroup>
+                        <Input type="text" name="radius" placeholder="Radius" bsSize="sm"  />
+                        <Input type="text" name="name" placeholder="Rotation radius" bsSize="sm" />
+                        <Input type="text" name="name" placeholder="Time" bsSize="sm" />
+                      </InputGroup>
+                      <Button type="submit" size="sm">Submit</Button>
+                    </Form>
+                  </ListGroupItem>)
+              }
+            </ListGroup>
+
           </Col>
           <Col xs="xl-6" className="system">
             <div className="frame">
