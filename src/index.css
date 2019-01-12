@@ -3,6 +3,11 @@
     to {transform:rotate(360deg);}
 }
 
+@keyframes rspin {
+    from {transform:rotate(360deg);}
+    to {transform:rotate(0deg);}
+}
+
 .system {
     background-color: #f2f2f2;
     width: 400px;
@@ -16,7 +21,6 @@
     top: 0;
     left: 0;
     background-color: transparent;
-    transform: rotate(30deg);
     animation-name: spin;
     animation-duration: 4000ms;
     animation-iteration-count: infinite;
@@ -31,4 +35,9 @@
     left: 30px;
     border-radius: 20px;
     background-color: black;
+
+    animation-name: rspin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }

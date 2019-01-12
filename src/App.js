@@ -22,8 +22,9 @@ class Planet extends Component {
         <div className="planet sun" style={{
           width: this.state.radius*2,
           height: this.state.radius*2,
-          borderRadius: this.state.radius,
-          left: this.state.rotation,
+          borderRadius: '50%',
+          left: 200 - this.state.rotation - this.state.radius,
+          top: 200 - this.state.rotation - this.state.radius,
           backgroundColor: this.state.color,
         }}>{this.state.name}</div>
       </div>
@@ -47,7 +48,7 @@ class App extends Component {
         {
           name: 'Sun',
           radius: 20,
-          rotation: 50,
+          rotation: 0,
           time: 10,
           sats: [
             {
