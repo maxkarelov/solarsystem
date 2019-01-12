@@ -32,6 +32,49 @@ class Planet extends Component {
   }
 }
 
+class Satellite extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      parentRadius: props.parentRadius,
+      parentRotation: props.parentRotation,
+      parentTime: props.parentTime,
+      parentColor: props.parentColor,
+      name: props.name,
+      radius: props.radius,
+      rotation: props.rotation,
+      time: props.time,
+    }
+  }
+
+  render() {
+    return (
+      <div className="frame" style={{backgroundColor: 'transparent', borderColor: 'black'}}>
+        <div className="planet" style={{
+          width: this.state.parentRotation*2 + this.state.parentRadius*2 + this.state.rotation + this.state.radius,
+          height: this.state.parentRotation*2 + this.state.parentRadius*2 + this.state.rotation + this.state.radius,
+          position: 'absolute',
+          left: 200 - (this.state.parentRotation*2 + this.state.parentRadius*2 + this.state.rotation + this.state.radius)/2,
+          top: 200 - (this.state.parentRotation*2 + this.state.parentRadius*2 + this.state.rotation + this.state.radius)/2,
+          backgroundColor: 'transparent',
+          animationName: 'spin',
+        }}>
+          <div className="planet" style={{
+            width: this.state.radius*2,
+            height: this.state.radius*2,
+            borderRadius: '50%',
+            position: 'absolute',
+            left: 75,
+            top: 75,
+            backgroundColor: 'green',
+            animationName: 'rspin',
+          }}></div>
+        </div>
+      </div>
+    )
+  }
+}
 
 class App extends Component {
   constructor(props) {
@@ -123,7 +166,7 @@ class App extends Component {
                       event.preventDefault();
                       this.updatePlanet(ind);
                     }}>
-                      <Input type="text" name="name" placeholder="Name" bsSize="sm" value={this.state.planets[ind].name}/>
+                      <Input type="text" name="name" placeholder="Name" bsSize="sm" value={this.state.planets[ind].ame}/>
                       <InputGroup>
                         <Input type="text" name="radius" placeholder="Radius" bsSize="sm" value={this.state.planets[ind].radius}/>
                         <Input type="text" name="name" placeholder="Rotation" bsSize="sm" value={this.state.planets[ind].rotation}/>
@@ -190,6 +233,7 @@ class App extends Component {
                 <Planet name={it.name} radius={it.radius} rotation={it.rotation} color={intToRGB(hashCode(it.name))} />
               ))
             }
+            <Satellite parentRadius={10} parentRotation={65} name='test' radius={15} rotation={60} />
           </Col>
         </Row>
       </Container>
