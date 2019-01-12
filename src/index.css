@@ -5,12 +5,17 @@
 
 .system {
     background-color: #f2f2f2;
+    width: 400px;
+    height: 400px;
 }
 
 .frame {
-    width: 300px;
-    height: 300px;
-
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
     transform: rotate(30deg);
     animation-name: spin;
     animation-duration: 4000ms;
@@ -27,80 +32,3 @@
     border-radius: 20px;
     background-color: black;
 }
-
-.sun {
-    top: 120px;
-    left: 120px;
-
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    background-color: orange;
-}
-
-.mars {
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    background-color: red;
-}
-
-.venus {
-    top: 20px;
-    left: 50px;
-
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    background-color: blue;
-}
-
-
-/*.planet {*/
-    /*display: block;*/
-    /*width: 40px;*/
-    /*height: 40px;*/
-    /*position: relative;*/
-    /*left: 200px;*/
-    /*top: 200px;*/
-    /*-webkit-border-radius: 20px;*/
-    /*-moz-border-radius: 20px;*/
-    /*border-radius: 20px;*/
-    /*background-color: black;*/
-/*}*/
-
-
-
-ul.solarsystem li.mars {
-    margin-top: 100px;
-    margin-left: 100px;
-    background-color: blue;
-    transform: rotate(90deg);
-}
-
-ul.solarsystem li {
-    -webkit-animation-iteration-count:infinite;
-    -webkit-animation-timing-function:linear;
-    -webkit-animation-name:orbit;
-}
-ul.solarsystem li.earth span {
-    -webkit-animation-iteration-count:infinite;
-    -webkit-animation-timing-function:linear;
-    -webkit-animation-name:moon;
-}
-ul.solarsystem li.mercury {-webkit-animation-duration:5s;}
-ul.solarsystem li.venus {-webkit-animation-duration:8s;}
-ul.solarsystem li.earth {-webkit-animation-duration:12s;}
-ul.solarsystem li.earth span {-webkit-animation-duration:2s;}
-ul.solarsystem li.mars {-webkit-animation-duration:20s;}
-ul.solarsystem li.asteroids_meteorids {-webkit-animation-duration:50s;}
-ul.solarsystem li.jupiter {-webkit-animation-duration:30s;}
-ul.solarsystem li.saturn {-webkit-animation-duration:60s;}
-ul.solarsystem li.uranus {-webkit-animation-duration:70s;}
-ul.solarsystem li.neptune {-webkit-animation-duration:100s;}
-ul.solarsystem li.pluto {-webkit-animation-duration:120s;}
-
-@-webkit-keyframes orbit {
-    from { -webkit-transform:rotate(0deg) }
-    to { -webkit-transform:rotate(360deg) } }
-
